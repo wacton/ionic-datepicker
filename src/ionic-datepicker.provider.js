@@ -94,7 +94,11 @@ angular.module('ionic-datepicker.provider', [])
         $scope.selctedDateEpoch = resetHMSM(today).getTime();
         if ($scope.mainObj.closeOnSelect) {
           $scope.mainObj.callback($scope.selctedDateEpoch);
-          closeModal();
+          if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
+            $scope.popup.close();
+          } else {
+            closeModal();
+          }
         }
       };
 
